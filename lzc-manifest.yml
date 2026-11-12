@@ -6,11 +6,11 @@ application:
   upstreams:
     - location: /
       backend: http://control:18080/
-
 services:
   control:
     # ghcr.io/yhan-sun/p2wlan/server:server-v0.1.173
-    image: registry.lazycat.cloud/czyt/yhan-sun/p2wlan/server:PLACEHOLDER
+    # upstream: ghcr.io/yhan-sun/p2wlan/server:server-v0.1.173
+    image: ghcr.1ms.run/yhan-sun/p2wlan/server:server-v0.1.173
     entrypoint: ["/usr/local/bin/p2wlan-control"]
     environment:
       - TZ=Asia/Shanghai
@@ -30,7 +30,6 @@ services:
       timeout: 5s
       retries: 6
       start_period: 10s
-
 usage: |
   自托管 Control 服务（仅控制面）。打开应用域名即管理台入口 /admin/（用部署时设置的管理员令牌登录）。
   客户端添加自托管服务：Control 地址填 https://<应用域名>。当前打包未包含 Relay 中继服务
