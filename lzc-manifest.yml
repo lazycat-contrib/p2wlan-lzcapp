@@ -1,0 +1,38 @@
+application:
+  subdomain: p2wlan
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://control:18080/
+
+services:
+  control:
+    # ghcr.io/yhan-sun/p2wlan/server:server-v0.1.173
+    image: registry.lazycat.cloud/czyt/yhan-sun/p2wlan/server:PLACEHOLDER
+    entrypoint: ["/usr/local/bin/p2wlan-control"]
+    environment:
+      - TZ=Asia/Shanghai
+      - CONTROL_BIND=:18080
+      - PORT=18080
+      - DB_PATH=/data/p2pnet.db
+      - LOG_UPLOAD_DIR=/data/log-uploads
+      - JWT_SECRET={{ stable_secret "p2wlan_jwt_secret" }}
+      - CONTROL_ADMIN_TOKEN={{ .U.admin_token }}
+    binds:
+      - /lzcapp/var/data:/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -fsS --connect-timeout 2 --max-time 4 http://127.0.0.1:18080/health >/dev/null
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+
+usage: |
+  自托管 Control 服务（仅控制面）。打开应用域名即管理台入口 /admin/（用部署时设置的管理员令牌登录）。
+  客户端添加自托管服务：Control 地址填 https://<应用域名>。当前打包未包含 Relay 中继服务
+  （需要公网域名和有效 TLS 证书），客户端在直连不可达的网络环境下将无法建立连接；大多数
+  NAT/IPv6 场景可直连使用。

@@ -1,0 +1,12 @@
+params:
+  - id: admin_token
+    type: secret
+    name: "Admin console token"
+    description: "Bearer token for the read-only admin console at /admin/. At least 32 characters."
+    default_value: "$random(len=40)"
+
+locales:
+  zh:
+    admin_token:
+      name: "管理台令牌"
+      description: "管理台 /admin/ 的 Bearer Token（至少 32 个字符），部署后可在参数中查看。"
