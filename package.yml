@@ -1,12 +1,11 @@
 package: community.lazycat.app.p2wlan
-version: 0.1.173
+version: 0.1.178
 name: P2WLAN Server
 description: "Self-hosted Control server for P2WLAN, the room-based P2P virtual LAN tool: accounts, rooms and device signaling over trusted HTTPS."
 min_os_version: 1.5.0
 author: yhan-sun
 license: MIT
 homepage: https://github.com/yhan-sun/p2wlan
-
 locales:
   zh:
     name: "P2WLAN Server"
@@ -14,7 +13,6 @@ locales:
   en:
     name: "P2WLAN Server"
     description: "Self-hosted Control server for P2WLAN, the room-based P2P virtual LAN tool: accounts, rooms and device signaling over trusted HTTPS."
-
 permissions:
   required:
     - net.internet
