@@ -1,5 +1,5 @@
 package: community.lazycat.app.p2wlan
-version: 0.1.178
+version: 0.1.179
 name: P2WLAN Server
 description: "Self-hosted Control server for P2WLAN, the room-based P2P virtual LAN tool: accounts, rooms and device signaling over trusted HTTPS."
 min_os_version: 1.5.0

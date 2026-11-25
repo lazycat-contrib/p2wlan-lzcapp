@@ -9,8 +9,8 @@ application:
 services:
   control:
     # ghcr.io/yhan-sun/p2wlan/server:server-v0.1.173
-    # upstream: ghcr.io/yhan-sun/p2wlan/server:server-v0.1.178
-    image: ghcr.1ms.run/yhan-sun/p2wlan/server:server-v0.1.178
+    # upstream: ghcr.io/yhan-sun/p2wlan/server:server-v0.1.179
+    image: ghcr.1ms.run/yhan-sun/p2wlan/server:server-v0.1.179
     entrypoint: ["/usr/local/bin/p2wlan-control"]
     environment:
       - TZ=Asia/Shanghai
